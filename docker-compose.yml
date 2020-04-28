@@ -1,0 +1,8 @@
+version: '3.6' 
+services:
+  frontend:
+    stdin_open: true
+    image: ksenoform99/pantry-app:0.0.1
+    container_name: pantry-front
+    ports:
+      - "8081:3000"

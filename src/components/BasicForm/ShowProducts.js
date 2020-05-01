@@ -8,7 +8,7 @@ export class ShowProducts extends Component {
         return (
              <div>
                 <ul>
-                    { productsNames.map(person => <li>{person}</li>) }
+                    <li>{productsNames}</li>
                 </ul>
             </div>
         );

@@ -5,16 +5,14 @@ import { ShowProducts } from "./ShowProducts";
 
 export class BasicForm extends Component {
     state = {
-        names: []
+        product: []
     }
 
-    onSubmit = value => {
-        addProduct(value);
-        getProducts().then(response => {
-            console.log("#aaa" + response)
-            this.setState({ names: response })
-    }).catch();
-        console.log(this.state.names);
+    onSubmit = async value => {
+        await addProduct(value);
+        getProducts().then( response  => {
+            this.setState({ product: response.data.name });
+        }).catch();
     }
 
     render() {
@@ -34,7 +32,7 @@ export class BasicForm extends Component {
                     )}
                 </Formik>
                 <ShowProducts
-                    productsNames={this.state.names}
+                    productsNames={this.state.product}
                 />
             </>
     );

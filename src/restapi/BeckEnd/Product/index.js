@@ -1,12 +1,11 @@
-import React from 'react';
 import API from '../index';
 
 export const getProducts = () =>
-    API.get('/product')
+    API.get('/products')
         .then(res => {
-            return res;
+            return res.data.productsDto;
         });
 
 export const addProduct = (product) =>
-    API.post('/product', product);
+    API.post('/products', product);
 

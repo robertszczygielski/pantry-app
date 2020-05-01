@@ -8,7 +8,7 @@ export class ShowProducts extends Component {
         return (
              <div>
                 <ul>
-                    <li>{productsNames}</li>
+                    { productsNames.map( (productName, index ) => <li key={ index }>{productName.name}</li>) }
                 </ul>
             </div>
         );

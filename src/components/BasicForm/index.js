@@ -11,7 +11,7 @@ export class BasicForm extends Component {
     onSubmit = async value => {
         await addProduct(value);
         getProducts().then( response  => {
-            this.setState({ product: response.data.name });
+            this.setState({ product: response });
         }).catch();
     }
 
@@ -24,8 +24,8 @@ export class BasicForm extends Component {
                 >
                     {() => (
                             <Form>
-                                <Field type="text" name="name"/>
-                                <button type="submit">
+                                <Field className="form-control" type="text" name="name"/>
+                                <button className="btn" type="submit">
                                     Send
                                 </button>
                             </Form>

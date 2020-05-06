@@ -7,7 +7,7 @@ Expect REST Api POST Json
 `{"name":"someName"}`
    
   
- After running, this application expect only one string in input field:
+ After running, this application expect only one string in input field:<br />
 ![Example lesson 1](extra/screenshots/lesson_1.png?raw=true)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

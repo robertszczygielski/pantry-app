@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
 import { Field, Form, Formik } from "formik";
-import { addProduct, getProducts } from "../../restapi/BeckEnd/Product";
+import { addProduct, getProducts, updateProduct } from "../../restapi/BeckEnd/Product";
 import { ShowProducts } from "./ShowProducts";
 
 export class BasicForm extends Component {
     state = {
-        product: []
+        product: null
+    }
+
+    componentDidMount() {
+        getProducts().then( (response = {})  => {
+            this.setState({ product: response.productsDto });
+        }).catch();
     }
 
     onSubmit = async value => {
         await addProduct(value);
         getProducts().then( response  => {
-            this.setState({ product: response });
+            this.setState({ product: response.productsDto });
+        }).catch();
+    };
+
+    onNameChange = async (id, newName) => {
+        await updateProduct(id, newName);
+
+        getProducts().then( response  => {
+            this.setState({ product: response.productsDto });
         }).catch();
     }
 
@@ -32,7 +46,8 @@ export class BasicForm extends Component {
                     )}
                 </Formik>
                 <ShowProducts
-                    productsNames={this.state.product}
+                    products={this.state.product}
+                    onNameChange={this.onNameChange}
                 />
             </>
     );

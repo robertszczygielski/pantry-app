@@ -13,7 +13,7 @@ export const getProducts = () =>
 
 export const addProduct = (product) =>
     API.post('/products', product)
-        .catch(err => console.log(err));
+        .catch(err => {return err.response});
 
 export const updateProduct = (id, newName) =>
     API.put('/products',

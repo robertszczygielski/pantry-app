@@ -32,23 +32,36 @@ export class BasicForm extends Component {
     render() {
         return (
             <>
-                <Formik
-                    initialValues={{ name: "" }}
-                    onSubmit={this.onSubmit}
-                >
-                    {() => (
-                            <Form>
-                                <Field className="form-control" type="text" name="name"/>
-                                <button className="btn" type="submit">
-                                    Send
-                                </button>
-                            </Form>
-                    )}
-                </Formik>
-                <ShowProducts
-                    products={this.state.product}
-                    onNameChange={this.onNameChange}
-                />
+                <div>
+                    <h2>
+                      Enter New Product:
+                    </h2>
+                    <Formik
+                        initialValues={{ name: "", amount: "" }}
+                        onSubmit={this.onSubmit}
+                    >
+                        {() => (
+                                <Form>
+                                    <label htmlFor="name">Name</label>
+                                    <Field className="form-control" type="text" name="name"/>
+                                    <label htmlFor="name">Amount</label>
+                                    <Field className="form-control" type="text" name="amount"/>
+                                    <button className="btn" type="submit">
+                                        Send
+                                    </button>
+                                </Form>
+                        )}
+                    </Formik>
+                </div>
+                <div>
+                    <h2>
+                        All Products:
+                    </h2>
+                    <ShowProducts
+                        products={this.state.product}
+                        onNameChange={this.onNameChange}
+                    />
+                </div>
             </>
     );
     }

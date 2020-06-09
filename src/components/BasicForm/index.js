@@ -59,7 +59,7 @@ export class BasicForm extends Component {
                                 <Form>
                                     <label htmlFor="name">Name</label>
                                     <Field className="form-control" type="text" name="name"/>
-                                    {this.state.nameError && <DangerMessage message={this.state.amountError} />}
+                                    {this.state.nameError && <DangerMessage message={this.state.nameError} />}
                                     <label htmlFor="name">Amount</label>
                                     <Field className="form-control" type="text" name="amount"/>
                                     {this.state.amountError && <DangerMessage message={this.state.amountError} />}

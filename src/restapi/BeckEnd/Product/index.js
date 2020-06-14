@@ -8,7 +8,16 @@ export const getProducts = () =>
             }
 
         })
-        .catch(err => console.log("#API Product: " + err));
+        .catch(err => {
+                console.log("#API Product: " + err)
+            return {"productsDto": [
+                    {
+                        "name": "test1",
+                        "amount": "1",
+                        "id": "1234"
+                    }]}
+            }
+        );
 
 export const getProductsCategories = () =>
     API.get('/products/categories')
@@ -18,7 +27,10 @@ export const getProductsCategories = () =>
             }
 
         })
-        .catch(err => console.log("#Api Categories: " + err));
+        .catch(err => {
+            console.log("#Api Categories: " + err);
+            return [{"name": "test", "id":"0"}]
+        });
 
 
 export const addProduct = (product) =>

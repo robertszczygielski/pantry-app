@@ -19,7 +19,6 @@ export class BasicForm extends Component {
         }).catch();
 
         getProductsCategories().then((response = {}) => {
-            console.dir("#1: " + JSON.stringify(response));
             this.setState({categories: response} );
         }).catch();
     }
@@ -74,7 +73,7 @@ export class BasicForm extends Component {
 
                                     <CategorySelect label="Product Category" name="category">
                                         {this.state.categories && this.state.categories.map(category =>
-                                            <option value={category.id}>{category.name}</option>
+                                            <option key={category.id} value={category.id}>{category.name}</option>
                                         )}
                                     </CategorySelect>
 

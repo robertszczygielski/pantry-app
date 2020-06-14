@@ -8,7 +8,17 @@ export const getProducts = () =>
             }
 
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log("#API Product: " + err));
+
+export const getProductsCategories = () =>
+    API.get('/products/categories')
+        .then(res => {
+            if (res.data) {
+                return res.data;
+            }
+
+        })
+        .catch(err => console.log("#Api Categories: " + err));
 
 
 export const addProduct = (product) =>

@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { Field, Form, Formik } from "formik";
-import { addProduct, getProducts, updateProduct } from "../../restapi/BeckEnd/Product";
+import { addProduct, getProducts, getProductsCategories, updateProduct } from "../../restapi/BeckEnd/Product";
 import { ShowProducts } from "./ShowProducts";
 import { DangerMessage } from "./DangerMessage";
+import { CategorySelect } from "./CategorySelect"
 
 export class BasicForm extends Component {
     state = {
         product: null,
+        categories: null,
         nameError: '',
         amountError: ''
     }
 
     componentDidMount() {
-        getProducts().then( (response = {})  => {
+        getProducts().then((response = {}) => {
             this.setState({ product: response.productsDto });
+        }).catch();
+
+        getProductsCategories().then((response = {}) => {
+            console.dir("#1: " + JSON.stringify(response));
+            this.setState({categories: response} );
         }).catch();
     }
 
@@ -52,7 +59,7 @@ export class BasicForm extends Component {
                       Enter New Product:
                     </h2>
                     <Formik
-                        initialValues={{ name: "", amount: "" }}
+                        initialValues={{ name: "", amount: "", category: "" }}
                         onSubmit={this.onSubmit}
                     >
                         {() => (
@@ -60,9 +67,17 @@ export class BasicForm extends Component {
                                     <label htmlFor="name">Name</label>
                                     <Field className="form-control" type="text" name="name"/>
                                     {this.state.nameError && <DangerMessage message={this.state.nameError} />}
+
                                     <label htmlFor="name">Amount</label>
                                     <Field className="form-control" type="text" name="amount"/>
                                     {this.state.amountError && <DangerMessage message={this.state.amountError} />}
+
+                                    <CategorySelect label="Product Category" name="category">
+                                        {this.state.categories && this.state.categories.map(category =>
+                                            <option value={category.id}>{category.name}</option>
+                                        )}
+                                    </CategorySelect>
+
                                     <button className="btn" type="submit">
                                         Send
                                     </button>

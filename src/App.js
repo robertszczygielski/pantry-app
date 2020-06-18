@@ -3,11 +3,12 @@ import { BasicForm } from './components/BasicForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { Routing } from "./components/routing";
 
 function App() {
   return (
     <div>
-      <BasicForm/>
+      <Routing/>
     </div>
   );
 }

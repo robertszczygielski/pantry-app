@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Field, Form, Formik } from "formik";
-import { addProduct, getProducts, getProductsCategories, updateProduct } from "../../restapi/BeckEnd/Product";
-import { ShowProducts } from "./ShowProducts";
+import { addProduct, getProducts, getProductsCategories, updateProduct } from "../../restapi/BackEnd/Product";
+import { ShowProducts } from "../products/ShowProducts";
 import { DangerMessage } from "./DangerMessage";
-import { CategorySelect } from "./CategorySelect"
+import { CategorySelect } from "../products/CategorySelect"
 
-export class BasicForm extends Component {
+export class BasicForms extends Component {
     state = {
         product: null,
         categories: null,

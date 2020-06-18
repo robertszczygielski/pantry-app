@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { DangerMessage } from "../BasicForm/DangerMessage";
+import { DangerMessage } from "./DangerMessage";
 import { CategorySelect } from "./CategorySelect";
 import { addProduct, getProductsCategories } from "../../restapi/BackEnd/Product";
 

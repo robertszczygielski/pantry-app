@@ -43,6 +43,15 @@ export const updateProduct = (id, newName) =>
             id : id,
             name: newName,
         })
-        .then(res => console.log("#res<" + res.data))
-        .catch(err => console.log("#err<" + err));
+        .then(res => console.log("#updateProduct<" + res.data))
+        .catch(err => console.log("#updateProductErr<" + err));
+
+export const deleteProduct = (id, newName) =>
+    API.delete('/products',
+        {
+            id : id,
+            name: newName,
+        })
+        .then(res => console.log("#deleteProduct<" + res.data))
+        .catch(err => console.log("#deleteProductErr<" + err));
 

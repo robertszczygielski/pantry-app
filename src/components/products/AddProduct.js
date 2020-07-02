@@ -8,11 +8,11 @@ export const AddProduct = () => {
 
     const [nameError, setNameError] = useState("");
     const [amountError, setAmountError] = useState("");
-    const categories = useState( () => {
-        return getProductsCategories().then((response) => {
-            return response;
-        }).catch();
-    })
+    const categories = useState( () =>
+        getProductsCategories().then((response) =>
+            response
+        ).catch()
+    )
 
     const onSubmit = async value => {
         const resp = await addProduct(value);

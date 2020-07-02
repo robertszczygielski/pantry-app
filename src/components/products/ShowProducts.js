@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TiEdit } from "react-icons/all";
+import {TiDelete, TiEdit} from "react-icons/all";
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -32,6 +32,10 @@ export const ShowProducts = (props) => {
         setProductNewName(v.target.value)
     }
 
+    const onDelete = (id, name) => {
+        props.onDeleteProduct(id, name);
+    }
+
     const handleChange = () => {
         props.onNameChange(productId, productNewName);
     }
@@ -50,6 +54,11 @@ export const ShowProducts = (props) => {
                         <div className="col-sm">
                             <button className="btn btn-primary" onClick={() => handleShow(item.id, item.name)}>
                                 <TiEdit/>
+                            </button>
+                        </div>
+                        <div className="col-sm">
+                            <button className="btn btn-danger" onClick={() => onDelete(item.id, item.name)}>
+                                <TiDelete/>
                             </button>
                         </div>
                     </div>

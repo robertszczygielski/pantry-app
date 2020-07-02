@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { getProducts, updateProduct } from "../../restapi/BackEnd/Product";
+import {
+  deleteProduct,
+  getProducts,
+  updateProduct
+} from "../../restapi/BackEnd/Product";
 import { ShowProducts } from "./ShowProducts";
 
 export const AllProducts = () => {
@@ -14,6 +18,10 @@ export const AllProducts = () => {
         await updateProduct(id, newName);
     }
 
+    const onDeleteProduct = async (id, name) => {
+      await deleteProduct(id, name)
+    }
+
     return (
         <>
             <h2>
@@ -22,6 +30,7 @@ export const AllProducts = () => {
             <ShowProducts
                 products={products}
                 onNameChange={onNameChange}
+                onDeleteProduct={onDeleteProduct}
             />
         </>
     )

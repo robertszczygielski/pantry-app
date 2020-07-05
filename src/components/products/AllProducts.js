@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   deleteProduct,
   getProducts,
@@ -7,12 +7,19 @@ import {
 import { ShowProducts } from "./ShowProducts";
 
 export const AllProducts = () => {
+    const [products, setProducts] = useState([]);
 
-    const products = useState(() =>
-        getProducts().then( response  => {
-          return response.productsDto
-        }).catch()
-    )
+    const fetchUrl = async () => {
+        const data = await getProducts().then(response => {
+                     return response.productsDto
+                 }).catch();
+
+        setProducts(data);
+    }
+
+    useEffect(() => {
+        fetchUrl().then(r => console.dir("Product fetch OK"));
+    }, []);
 
     const onNameChange = async (id, newName) => {
         await updateProduct(id, newName);

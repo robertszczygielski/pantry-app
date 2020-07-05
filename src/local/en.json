@@ -2,7 +2,8 @@
   "error": {
     "message": {
       "PANTRY_PRODUCT_NAME_NO_SMALL_LETTER": "The name of this product should be started from capital letter",
-      "PANTRY_PRODUCT_AMOUNT_GREATER_THAN_ZERO": "The amount of this product should be greater than zero"
+      "PANTRY_PRODUCT_AMOUNT_GREATER_THAN_ZERO": "The amount of this product should be greater than zero",
+      "PANTRY_PRODUCT_CATEGORY_NOT_CHOSEN": "The product category is not set"
     }
   }
 }

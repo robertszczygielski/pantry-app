@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { DangerMessage } from "./DangerMessage";
 import { CategorySelect } from "./CategorySelect";
@@ -8,16 +8,29 @@ export const AddProduct = () => {
 
     const [nameError, setNameError] = useState("");
     const [amountError, setAmountError] = useState("");
-    const categories = useState( () =>
-        getProductsCategories().then((response) =>
-            response
-        ).catch()
-    )
+    const [categoryError, setCategoryError] = useState("");
+    const [categories, setCategories] = useState([]);
 
-    const onSubmit = async value => {
+    const fetchUrl = async () => {
+        const data = await getProductsCategories().then(response => {
+            return response
+        }).catch();
+
+        setCategories(data);
+    }
+
+    useEffect(() => {
+        fetchUrl().then(r => console.dir("Categories fetch OK"));
+    }, []);
+
+    const onSubmit = async (value, {resetForm}) => {
         const resp = await addProduct(value);
         if (resp.status === 500) {
             errorMapper(resp.data.message);
+        } else {
+            resetForm();
+            setAmountError("");
+            setNameError("");
         }
     };
 
@@ -26,6 +39,8 @@ export const AddProduct = () => {
             setNameError(`error.message.${errorCode}`);
         } else if (errorCode === 'PANTRY_PRODUCT_AMOUNT_GREATER_THAN_ZERO') {
             setAmountError(`error.message.${errorCode}` );
+        } else if (errorCode === 'PANTRY_PRODUCT_CATEGORY_NOT_CHOSEN') {
+            setCategoryError(`error.message.${errorCode}` );
         }
     }
 
@@ -35,7 +50,8 @@ export const AddProduct = () => {
                 Enter New Product:
             </h2>
             <Formik
-                initialValues={{ name: "", amount: "", category: "" }}
+                enableReinitialize
+                initialValues={{ name: "", amount: "", category: categories[0] !== undefined  ? categories[0].id : "" }}
                 onSubmit={onSubmit}
             >
                 {() => (

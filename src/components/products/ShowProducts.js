@@ -41,7 +41,7 @@ export const ShowProducts = (props) => {
     }
 
     return (
-        <>
+        <div>
             {products && products.map((item) =>
                 <div className="container" key={item.id}>
                     <div className="row align-items-center">
@@ -78,6 +78,6 @@ export const ShowProducts = (props) => {
                     <button className="btn btn-danger" onClick={handleClose}>Cancel</button>
                 </form>
             </Modal>
-        </>
+        </div>
     );
 }

@@ -30,7 +30,7 @@ export const AddProduct = () => {
     }
 
     return (
-        <>
+        <div>
             <h2>
                 Enter New Product:
             </h2>
@@ -60,6 +60,6 @@ export const AddProduct = () => {
                     </Form>
                 )}
             </Formik>
-        </>
+        </div>
     )
 }

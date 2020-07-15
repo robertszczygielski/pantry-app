@@ -23,7 +23,7 @@ export const AllProducts = () => {
     }
 
     return (
-        <>
+        <div>
             <h2>
                 All Products:
             </h2>
@@ -32,6 +32,6 @@ export const AllProducts = () => {
                 onNameChange={onNameChange}
                 onDeleteProduct={onDeleteProduct}
             />
-        </>
+        </div>
     )
 }

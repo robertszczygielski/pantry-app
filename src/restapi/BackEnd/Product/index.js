@@ -26,7 +26,6 @@ export const getProductsCategories = () =>
       if (res.data) {
         return res.data;
       }
-
     })
     .catch(err => {
       return [{"name": "test", "id": "0"}]

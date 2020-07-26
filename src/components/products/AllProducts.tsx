@@ -12,12 +12,16 @@ export const AllProducts: React.FC = () => {
   const [products, setProducts] = useState<Array<IProduct | null> | null>([]);
 
   useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const getAllProducts = () => {
     getProducts()
       .then((response) => {
         setProducts(response);
       })
       .catch();
-  });
+  };
 
   const onNameChange = async (id: string, newName: string) => {
     await updateProduct(id, newName);
@@ -28,9 +32,10 @@ export const AllProducts: React.FC = () => {
       id: id,
       name: name,
       amount: 0,
-      category: 'NaN',
+      category: null,
     };
     await deleteProduct(productToDelete);
+    getAllProducts();
   };
 
   return (
